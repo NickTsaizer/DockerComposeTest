@@ -6,8 +6,8 @@ class ctrl_user {
         DATABASE::query('SELECT id, login, email, avatar FROM users where id = ?', [$id]);
         $user = DATABASE::getResult();
         if($user) {
-            if(!$user['avatar']) {
-                $user['avatar'] = '/assets/img/user.jpg';
+            if(!$user[0]['avatar']) {
+                $user[0]['avatar'] = '/assets/img/user.jpg';
             }
             if($_SESSION['user_id'] == $id) {
                 TMP::add('user-edit', $user[0]);

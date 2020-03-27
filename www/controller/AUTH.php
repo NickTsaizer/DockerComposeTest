@@ -78,13 +78,13 @@ class AUTH {
     }
 
     static function initBase() {
-        DATABASE::query("CREATE TABLE IF NOT EXISTS `users` (
+        DATABASE::query('CREATE TABLE IF NOT EXISTS `users` (
                                   `id` BIGINT NOT NULL PRIMARY KEY AUTO_INCREMENT,
                                   `email` char(255) NOT NULL UNIQUE,
                                   `login` char(25) NOT NULL,
                                   `passhash` char(64) NOT NULL,
-                                  `avatar` char(64) DEFAULT '/assets/img/user.jpg',
-                                  `admin` BOOLEAN NOT NULL DEFAULT FALSE)");
+                                  `avatar` char(64),
+                                  `admin` BOOLEAN NOT NULL DEFAULT FALSE)');
 
         DATABASE::query('CREATE UNIQUE INDEX email ON users(email)');
         DATABASE::query('CREATE INDEX login_id ON users(login, id)');
